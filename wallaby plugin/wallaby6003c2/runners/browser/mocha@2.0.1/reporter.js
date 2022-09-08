@@ -1,0 +1,14 @@
+/*
+ * Wallaby.js - v1.0.1328
+ * https://wallabyjs.com
+ * Copyright (c) 2014-2022 Wallaby.js - All Rights Reserved.
+ *
+ * This source code file is a part of Wallaby.js and is a proprietary (closed source) software.
+
+ * IMPORTANT:
+ * Wallaby.js is a tool made by software developers for software developers with passion and love for what we do.
+ * Pirating the tool is not only illegal and just morally wrong,
+ * it is also unfair to other fellow programmers who are using it legally,
+ * and very harmful for the tool and its future.
+ */
+!function(e){var t,i=e.$_$tracer,r=i.initialSpecId(),n=[];mocha.setup({ui:"bdd",fullTrace:!0,slow:e.wallaby.slowTestThreshold,reporter:function(e){if(e.grepTotal=function(){return!0},e.runTest=function(e){var t=this.test,r=this,n=e;if(e=function(){if(!t._finished)return n.apply(this,arguments)},t){this.asyncOnly&&(t.asyncOnly=!0);try{t.on("error",function(e){r.fail(t,e)}),i.specSyncStart();try{t.run(e)}finally{i.specSyncEnd()}}catch(s){e(s)}}},e._grep={test:function(e){if(!i.hasSpecFilter())return!0;var t=n.slice(1);return t.push(e.substr(t.join(" ").length+1)),i.specFilter(t)}},i.needToNotifySingleTestRun()){var s=e.hook;e.hook=function(t,r){if("afterEach"!==t)return Function.prototype.apply.call(s,this,arguments);var n=arguments,o=this;i.notifySingleTestAfterEach(function(){Function.prototype.apply.call(s,o,n)}),e.hook=s}}e.on("start",function(){i.started({total:e.total})}),e.on("end",function(){i.complete()}),e.on("suite",function(e){n.push(e.title),t=e}),e.on("suite end",function(){n.pop()}),e.on("test",function(e){e._id=++r,e._failures=[],e._time=(new i._Date).getTime(),i.specStart(e._id,e.title)}),e.on("fail",function(t,i){"hook"===t.type||t._finished?(t._hook="hook"===t.type&&t.title||!0,t._failures=[i],e.emit("test end",t)):t._failures.push(i)}),e.on("test end",function(e){e._finished=!0;var t=i.specEnd(),s=function(e){return!!e&&(e.pending===!0||s(e.parent))},o=s(e),a="passed"===e.state,l=o?"skipped":"executed",c={id:void 0===e._id?++r:e._id,timeRange:t,name:e.title,suite:n.slice(1),status:l,time:o?0:(new i._Date).getTime()-e._time,log:[],hook:e._hook,slow:e.slow?e.duration>e.slow():void 0,testFile:e._testFile};if(!a&&!o)for(var u=e._failures,h=0;h<u.length;h++){var d=u[h],p=d.uncaught&&d.message,f={message:p?d.message.substr(0,d.message.lastIndexOf(" (")):d.message,stack:d.stack||p&&d.message.substring(d.message.lastIndexOf("(")+1,d.message.length-1)};i.setAssertionData(d,f),c.log.push(f)}c.log.length||delete c.log,i.result(c)})}});var s=e.it;e.it=function(){var e=Function.prototype.apply.call(s,this,arguments);return e._testFile=i.entryFile(),e},e.it.only=s.only,e.it.skip=s.skip}(window);
